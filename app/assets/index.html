@@ -4,23 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sitemap Guru - The sitemap generator you deserve</title>
-    <link href="https://fonts.googleapis.com/css?family=Bitter|Montserrat" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
-    <link rel="stylesheet" href="css/fontello.css">
-    <link rel="stylesheet" href="css/animation.css">
     <link rel="stylesheet" href="css/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Bitter:400" rel="stylesheet"/>
     <!-- Require Elm Code & Regular JS -->
     <script src="js/main.js"></script>
-    <script src="js/app.js"></script>
+  </head>
 
+  <body class="sans-serif">
+    <main id="root"></main>
     <!-- Start Elm app in fullscreen mode -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        Elm.Main.init({ node: document.body, flags: { remote: '/api', href: window.location.href } });
+        Elm.Main.init({ node: document.getElementById("root"), flags: { remote: '/api', href: window.location.href } });
       });
     </script>
-  </head>
-
-  <body>
   </body>
 </html>

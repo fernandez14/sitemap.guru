@@ -321,16 +321,32 @@ view model =
             model.loading == False && model.finishing == False && model.processing == False && model.processed > 0
     in
     section [ class "vh-100 dt w-100 bg-green" ]
-        [ div [ class "mw8 center" ]
-            [ figure [ class "pa0 pt5 pb4 ma0 tc" ] [ img [ class "h4", src "/images/logo.png" ] [] ]
+        [ header [ class "flex bg-black-90 w-100 mb4 white-90 ph3 pv2 f6" ]
+            [ div [ class "flex-auto" ]
+                [ span [] [ text "Made with " ]
+                , span [ class "red" ] [ text "♥" ]
+                , span [] [ text " in Mexico City by " ]
+                , a [ class "white underline", href "https://github.com/fernandez14", target "_blank" ] [ text "@fernandez14" ]
+                ]
+            , div []
+                [ a [ class "white underline mh2", href "mailto:fernandez14@outlook.com", target "_blank" ] [ text "Contact" ]
+                , a [ class "white underline mh2", href "https://github.com/fernandez14/sitemap.guru", target "_blank" ] [ text "Project's Github" ]
+                ]
+            ]
+        , div [ class "mw8 center" ]
+            [ figure [ class "pa0 pt5 pb4 ma0 tc" ]
+                [ img [ class "h4", src "/images/logo.png", alt "Sitemap Guru - The free sitemap generator you deserve" ] []
+                ]
             , h1 [ class "f1 ma0 tc white-90 lh-title b" ] [ text "The free sitemap generator you deserve" ]
             , h2 [ class "f3 mv3 tc white-90 fw4" ] [ text "¿Tired of awful, past century & slow XML sitemap generators?" ]
             , p [ class "measure tc center black-70 lh-copy" ] [ text "Sitemap guru has been built as a result of experimenting with Golang, ELM & micro services architecture, so enjoy your free ride on the best seat to the sitemap nirvana." ]
             , section [ class "center pt3 w-100", classList [ ( "measure-wide", not finished ) ] ]
                 [ Html.form [ onSubmit Send, classList [ ( "dn", model.loading || model.processing || model.finishing || model.processed > 0 ) ] ]
-                    [ label [ class "b db tc pb2" ] [ text "Starting URL" ]
-                    , p [ class "ma0 pb2 black-70 tc f6 lh-copy" ] [ text "Please enter the full http address for your site, only the links within the starting directory will be included." ]
-                    , input [ type_ "url", name "url", onInput Url, value model.url, placeholder "http://wantmymap.io/from-here", class "input-reset ba b--black-80 br1 bw1 pa3 mb2 db w-100 outline-0 bg-white-90 hover-bg-white" ] []
+                    [ label [ class "b db tc pb2" ]
+                        [ text "Starting URL"
+                        , p [ class "ma0 pb2 black-70 tc f6 lh-copy" ] [ text "Please enter the full http address for your site, only the links within the starting directory will be included." ]
+                        , input [ type_ "url", name "url", onInput Url, value model.url, placeholder "http://wantmymap.io/from-here", class "input-reset ba b--black-80 br1 bw1 pa3 mb2 db w-100 outline-0 bg-white-90 hover-bg-white" ] []
+                        ]
                     , div [ class "dn pv2" ]
                         [ div [ class "flex-auto pr2" ]
                             [ label [ class "b db tc pb2" ] [ text "Change frequency" ]
@@ -594,7 +610,7 @@ fetchCrawledUrls : Model -> Cmd Msg
 fetchCrawledUrls model =
     let
         endpoint =
-            model.config.remote ++  "/sitemap/" ++ model.crawlID ++ "/urls"
+            model.config.remote ++ "/sitemap/" ++ model.crawlID ++ "/urls"
 
         request =
             Http.get endpoint decodeUrls

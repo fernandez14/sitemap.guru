@@ -15,7 +15,9 @@
   ],
   "author": "Alaister Young <a@alaisteryoung.com>",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "tachyons": "^4.11.1"
+  },
   "devDependencies": {
     "auto-reload-brunch": "^2.7.1",
     "brunch": "^2.10.17",
