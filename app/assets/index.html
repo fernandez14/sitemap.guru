@@ -1,18 +1,23 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A free xml sitemap generator you'd want to use! Meet the Guru and enjoy your free ride on the best seat to the sitemap nirvana.">
     <title>Sitemap Guru - The sitemap generator you deserve</title>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/app.css">
-    <link href="https://fonts.googleapis.com/css?family=Bitter:400" rel="stylesheet"/>
-    <!-- Require Elm Code & Regular JS -->
-    <script src="js/main.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet"/>
   </head>
 
   <body class="sans-serif">
-    <main id="root"></main>
-    <!-- Start Elm app in fullscreen mode -->
+    <main id="root">
+      <img src="/images/logo.png" alt="Wait until the sitemap guru shows up." />
+      <noscript><p>Sitemap guru needs Javascript to do it's magic, please enable it or change your current browser.</p></noscript>
+    </main>
+    <script src="js/main.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         Elm.Main.init({ node: document.getElementById("root"), flags: { remote: '/api', href: window.location.href } });
