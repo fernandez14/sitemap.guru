@@ -369,6 +369,7 @@ view model =
                             ]
                         ]
                     , input [ type_ "submit", value "Generate Sitemap", class "input-reset ba b grow pointer b--black bg-black white-90 br2 bw2 pa3 mb2 db w-100" ] []
+                    , p [ class "ma0 tc b mt3" ] [ text "Note: Javascript generated sites are not supported." ]
                     ]
                 , div [ class "tc pv3", classList [ ( "dn", not (model.loading || model.finishing || model.processing) ) ] ]
                     [ span [ class "icon-spin6 animate-spin f3" ] [] ]
